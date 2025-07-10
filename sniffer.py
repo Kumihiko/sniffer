@@ -77,7 +77,7 @@ class SnifferApp:
 
         self.tree.bind('<<TreeviewSelect>>', self.show_packet_details)
 
-        self.update_stats()  # start updating stats periodically
+        self.update_stats() 
 
     def packet_matches_filters(self, packet):
         if not packet.haslayer('IP'):
@@ -130,7 +130,7 @@ class SnifferApp:
             if proto_name in self.protocol_counts:
                 self.protocol_counts[proto_name] += 1
             else:
-                self.protocol_counts[proto_name] = 1  # in case of new proto
+                self.protocol_counts[proto_name] = 1 
 
             self.root.after(0, lambda: self.update_tree(src, dst, proto_name, port_str))
 
@@ -209,7 +209,7 @@ class SnifferApp:
     def update_stats(self):
         for proto, count in self.protocol_counts.items():
             self.stats_labels[proto].config(text=f"{proto}: {count}")
-        self.root.after(1000, self.update_stats)  # update every 1 second
+        self.root.after(1000, self.update_stats)  
 
 
 if __name__ == "__main__":
